@@ -24,13 +24,12 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          # Boosted to the modern stable releases to match your Flet CLI demands
           channel: 'stable'
 
       - name: Build Android APK
         run: |
-          # --no-interactive forces the compiler to say "yes" automatically to any download prompt
-          flet build apk --no-interactive
+          # The 'yes |' prefix answers "yes" automatically to the Flutter SDK installation prompt
+          yes | flet build apk
           
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
